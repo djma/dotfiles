@@ -8,7 +8,10 @@ set ignorecase "Ignore case when searching
 set smartcase
 set incsearch "Incremental search"
 set nolazyredraw "Don't redraw while executing macros"
+set hlsearch
 
+set ignorecase "Ignore case when searching"
+set smartcase
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Files, backups and undo
