@@ -1,0 +1,49 @@
+# /etc/shellrc
+#
+# System wide functions, aliases, variables for bourne shells.
+#
+# $Id$
+# $URL$
+#
+
+# add /usr/facebook/scripts to path
+export PATH=$PATH:/usr/facebook/scripts
+
+function check_cert_expiration () {
+    cert_expire_limit=7
+    cert_expire=`ssh-keygen -L -f $1 | grep Valid | awk '{print $5}' | sed s/T/' '/`
+    cert_time_diff=0
+    if [ ! -z "$cert_expire" ]; then
+        let "cert_time_diff=$(date -d "$cert_expire" '+%s') - $(date '+%s')"
+        if [ $cert_time_diff -lt $(($cert_expire_limit * 60 * 60 * 24)) ]; then
+            echo "==========================================================================="
+            if [ $cert_time_diff -gt 0 ]; then
+                echo "Your cert will expire in less than $cert_expire_limit days"
+                echo "-> $1 expires on $(date -d "$cert_expire")"
+            else
+                echo "Your cert has expired"
+                echo "-> $1 expired on $(date -d "$cert_expire")"
+            fi
+            echo "Run '/home/engshare/ssh/cert.sh' to renew it now"
+            echo "If you're running ssh-agent, run 'ssh-add -D; ssh-add' to add the new cert"
+            echo "If you don't ssh to prod and want to get rid of this message, run 'rm $1'"
+            echo "Questions? Email rootcanal@lists"
+            echo "==========================================================================="
+        fi
+    else
+        echo "No valid expiration date found. Try running ssh-keygen -L -f $1 to debug."
+        echo "You can run '/home/engshare/ssh/cert.sh' to regen the cert or email rootcanal@lists for help."
+    fi
+}
+
+LOGINOUTHISTFILE=$HOME/.loginouthistory
+
+echo "LOGIN: $(who -m) $(date) $(echo $SSH_CONNECTION)" >> $LOGINOUTHISTFILE
+function _exit()
+{
+    echo "LOGOFF: $(who -m) $(date) $(echo $SSH_CONNECTION)" >> $LOGINOUTHISTFILE
+}
+trap _exit EXIT
+
+alias super="sudo /usr/bin/rootsh"
+alias dba="source /usr/facebook/scripts/db/dba_lib.sh"
