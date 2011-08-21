@@ -10,6 +10,7 @@ set incsearch "Incremental search"
 set nolazyredraw "Don't redraw while executing macros"
 set hlsearch
 set cursorline
+set ruler
 
 set ignorecase "Ignore case when searching"
 set smartcase
@@ -40,6 +41,7 @@ set smartindent
 
 
 set modeline
+set bs=2
 set ls=2
 
 set tags=tags;/
