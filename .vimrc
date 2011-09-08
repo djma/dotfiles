@@ -44,6 +44,9 @@ set modeline
 set bs=2
 set ls=2
 
+set t_Co=256
+colorscheme koehler
+
 set tags=tags;/
 
 nmap Q <C-[>
