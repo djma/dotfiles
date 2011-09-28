@@ -1,0 +1,9 @@
+[user]
+	name = David Ma
+	email = ma.davidj@gmail.com
+  editor = vim
+[alias]
+  wtf = log --oneline --graph --all --decorate
+  tree = log --oneline --graph --decorate
+[color]
+  ui = true
