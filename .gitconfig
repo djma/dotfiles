@@ -1,6 +1,6 @@
 [user]
-	name = David Ma
-	email = ma.davidj@gmail.com
+  name = djma
+  email = ma.davidj@gmail.com
   editor = vim
 [alias]
   wtf = log --oneline --graph --all --decorate
