@@ -3,6 +3,7 @@ alias ls='ls --color=tty'
 # User specific aliases and functions
 alias screen='screen -e\`n -s /bin/bash'
 alias grepr='grep -r -n --color=auto'
+alias vim='vim -X'
 
 # external binaries
 alias ghc='/cygdrive/c/Program\ Files\ \(x86\)/Haskell\ Platform/2011.2.0.1/bin/ghc.exe'
