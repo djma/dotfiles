@@ -15,6 +15,9 @@ set ruler
 set ignorecase "Ignore case when searching"
 set smartcase
 
+set vb "no visual bell"
+set t_vb= "no visual bell"
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Files, backups and undo
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
