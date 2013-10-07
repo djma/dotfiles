@@ -30,7 +30,7 @@ fi
 source ~/.bash-completion/git
 
 # Promt formatting
-PS1="\[\e[1;36m\][@\h \W\$(git branch 2> /dev/null | grep -e '\* ' | sed 's/^..\(.*\)/{\1}/')]\n\[\e[0m\]\$ "
+PS1="\[\e[1;36m\][@\h \W\$(git branch 2> /dev/null | grep -e '\* ' | sed 's/^..\(.*\)/{\1}/')]\[\e[0m\]\$ "
 
 set -o vi
 
