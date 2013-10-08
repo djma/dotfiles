@@ -49,7 +49,7 @@ set modeline
 set bs=2
 set ls=2
 
-"set t_Co=256
+set t_Co=256
 "colorscheme koehler
 let g:solarized_termcolors=256
 colorscheme solarized
