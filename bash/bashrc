@@ -1,3 +1,8 @@
+#Environment variables
+export GIT_EDITOR=vim
+export VISUAL=vim
+export EDITOR=vim
+
 alias ls='ls --color=tty'
 
 # User specific aliases and functions
