@@ -1,0 +1,20 @@
+#!/bin/bash
+
+git_bundles=(
+  'git@github.com:altercation/vim-colors-solarized.git'
+)
+
+if [ ! -d ~/.vim/bundle ]; then
+  mkdir ~/.vim/bundle
+fi
+
+for bundle in ${git_bundles}
+do
+  bundle_name=$(echo $bundle | sed 's/.*\///; s/\.git//')
+  if [ -d ~/.vim/bundle/$bundle_name ]; then
+    cd ~/.vim/bundle/$bundle_name
+    git pull
+  else
+    git clone $bundle ~/.vim/bundle/$bundle_name
+  fi
+done

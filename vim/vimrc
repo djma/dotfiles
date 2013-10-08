@@ -1,4 +1,4 @@
-call pathogen#runtime_append_all_bundles()
+call pathogen#incubate()
 call pathogen#helptags()
 
 set nocompatible
@@ -49,12 +49,14 @@ set modeline
 set bs=2
 set ls=2
 
-set t_Co=256
-colorscheme koehler
+"set t_Co=256
+"colorscheme koehler
+let g:solarized_termcolors=256
+colorscheme solarized
+set background=dark
 
 set tags=tags;/
 
-nmap Q <C-[>
 map <F6> :set nu!<CR>
 imap <F6> <ESC>:set nu!<CR>a
 
