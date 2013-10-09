@@ -2,13 +2,15 @@
 
 git_bundles=(
   'git@github.com:altercation/vim-colors-solarized.git'
-)
+  'git@github.com:vim-scripts/Vim-R-plugin.git'
+  'git@github.com:ervandew/screen.git'
+  )
 
 if [ ! -d ~/.vim/bundle ]; then
   mkdir ~/.vim/bundle
 fi
 
-for bundle in ${git_bundles}
+for bundle in ${git_bundles[@]}
 do
   bundle_name=$(echo $bundle | sed 's/.*\///; s/\.git//')
   if [ -d ~/.vim/bundle/$bundle_name ]; then
