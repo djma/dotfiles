@@ -8,7 +8,8 @@ alias ls='ls --color=tty'
 # User specific aliases and functions
 alias screen='screen -e\`n -s /bin/bash'
 alias grepr='grep -r -n --color=auto'
-alias vim='vim -X'
+alias vim='vim -X -O'
+alias tmux='export TERM=xterm-256color; /usr/bin/tmux'
 
 # Git stuff
 source ~/.bash-completion/git

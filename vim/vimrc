@@ -75,3 +75,4 @@ let maplocalleader = "\\"
 syntax on
 filetype plugin on
 filetype indent on
+let vimrplugin_assign = 0
