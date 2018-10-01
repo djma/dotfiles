@@ -3,7 +3,13 @@
   email = ma.davidj@gmail.com
   editor = vim
 [alias]
+  st = status
+  br = branch
   wtf = log --oneline --graph --all --decorate
+  wtff = log --oneline --graph --all --decorate --pretty=format:'%C(yellow)%h %Cred%ad %Cblue%an%Cgreen%d %Creset%s' --date=short
   tree = log --oneline --graph --decorate
+  chekcout = checkout
 [color]
   ui = true
+[push]
+	default = simple
