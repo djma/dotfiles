@@ -3,13 +3,17 @@ export GIT_EDITOR=vim
 export VISUAL=vim
 export EDITOR=vim
 
-alias ls='ls --color=tty'
-
 # User specific aliases and functions
-alias screen='screen -e\`n -s /bin/bash'
+#alias rm='rm -i'
+alias gitcleanbranch='git branch --merged | egrep -v "(^\*|master|dev)" | xargs git branch -d'
 alias grepr='grep -r -n --color=auto'
-alias vim='vim -X -O'
+alias ipython='ipython notebook --matplotlib inline'
+alias ls='ls -G'
+alias mv='mv -i'
+alias mydu='du -ks * | sort -nr | cut -f2 | sed '"'"'s/^/"/;s/$/"/'"'"' | xargs du -sh'
+alias screen='screen -e\`n -s /bin/bash'
 alias tmux='export TERM=xterm-256color; /usr/bin/tmux'
+alias vim='vim -X -O'
 
 # Git stuff
 source ~/.bash-completion/git
@@ -17,6 +21,7 @@ source ~/.bash-completion/git
 # Promt formatting
 PS1="\[\e[1;36m\][@\h \W\$(git branch 2> /dev/null | grep -e '\* ' | sed 's/^..\(.*\)/{\1}/')]\[\e[0m\]\$ "
 
+# Command line vi mode
 set -o vi
 
 # To be able to paste from clipboard, see .inputrc as well...
