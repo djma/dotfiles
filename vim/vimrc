@@ -53,7 +53,7 @@ set t_Co=256
 "colorscheme koehler
 let g:solarized_termcolors=256
 colorscheme solarized
-set background=dark
+set background=light
 
 set tags=tags;/
 
@@ -62,6 +62,8 @@ imap <F6> <ESC>:set nu!<CR>a
 
 nnoremap <space> za
 vnoremap <space> zf
+
+vnoremap . :norm.<CR>
 
 fun! <SID>StripTrailingWhitespaces()
     let l = line(".")
@@ -76,3 +78,7 @@ syntax on
 filetype plugin on
 filetype indent on
 let vimrplugin_assign = 0
+
+autocmd BufNewFile,BufRead *.ts set syntax=javascript
+
+"set mouse=a
