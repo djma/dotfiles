@@ -20,3 +20,6 @@ do
     git clone $bundle ~/.vim/bundle/$bundle_name
   fi
 done
+
+mkdir -p ~/.vim/autoload ~/.vim/bundle && \
+curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
