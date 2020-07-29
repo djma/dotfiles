@@ -1,0 +1,24 @@
+{
+  "workbench.colorTheme": "Solarized Light",
+  "vim.hlsearch": true,
+  "vim.camelCaseMotion.enable": true,
+  "editor.insertSpaces": true,
+  "editor.suggestSelection": "first",
+  "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+  "files.exclude": {
+      "**/.settings": true,
+      "**/.factorypath": true
+    },
+    "window.zoomLevel": 0,
+    "editor.acceptSuggestionOnEnter": "smart",
+    "editor.minimap.enabled": false,
+    "workbench.editor.enablePreview": false,
+    "extensions.ignoreRecommendations": false,
+    "java.configuration.checkProjectSettingsExclusions": false,
+    "explorer.confirmDragAndDrop": false,
+    "java.semanticHighlighting.enabled": false,
+    "vim.visualModeKeyBindingsNonRecursive": [
+      
+    ],
+}
+
