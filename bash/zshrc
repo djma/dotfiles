@@ -1,0 +1,69 @@
+#Environment variables
+export GIT_EDITOR=vim
+export VISUAL=vim
+export EDITOR=vim
+
+# User specific aliases and functions
+#alias rm='rm -i'
+alias gitcleanbranch='git branch --merged | egrep -v "(^\*|master|dev)" | xargs git branch -d'
+alias grepr='grep -r -n --color=auto'
+alias ipython='ipython notebook --matplotlib inline'
+alias ls='ls -G'
+alias mv='mv -i'
+alias mydu='du -ks * | sort -nr | cut -f2 | sed '"'"'s/^/"/;s/$/"/'"'"' | xargs du -sh'
+alias screen='screen -e\`n -s /bin/bash'
+alias tmux='export TERM=xterm-256color; /usr/bin/tmux'
+alias vim='vim -X -O'
+
+# bash completion
+if [ -f $HOME/.zsh/bash_completion ]; then
+#   . $HOME/.zsh/bash_completion
+fi
+
+zstyle ':completion:*:*:git:*' script ~/.zsh/git-completion.bash
+
+# Git completion
+fpath+=$HOME/.zsh/_git
+
+# Command line vi mode
+set -o vi
+
+# Allows zsh to read # as comments
+setopt interactivecomments
+
+# zsh prompt formatting
+fpath+=$HOME/.zsh/pure
+
+# zsh git autocomplete
+autoload -Uz compinit && compinit
+
+autoload -U promptinit; promptinit
+prompt pure
+
+# To be able to paste from clipboard, see .inputrc as well...
+stty lnext ^q stop undef start undef
+
+# Homebrew
+eval $(/opt/homebrew/bin/brew shellenv)
+
+# reverse search
+bindkey -v
+bindkey '^R' history-incremental-search-backward
+
+# https://unix.stackexchange.com/questions/290392/backspace-in-zsh-stuck
+bindkey -v '^?' backward-delete-char
+
+
+# Created by `pipx` on 2021-05-30 04:14:57
+export PATH="$PATH:/Users/davidma/.local/bin"
+
+# pyenv
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init --path)"
+eval "$(pyenv init -)"
+
+# ???
+#export ARCHFLAGS="-arch x86_64"
+
+[ -s "/Users/davidma/.web3j/source.sh" ] && source "/Users/davidma/.web3j/source.sh"
