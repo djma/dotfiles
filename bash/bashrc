@@ -26,3 +26,4 @@ set -o vi
 
 # To be able to paste from clipboard, see .inputrc as well...
 stty lnext ^q stop undef start undef
+. "$HOME/.cargo/env"

@@ -3,6 +3,19 @@ export GIT_EDITOR=vim
 export VISUAL=vim
 export EDITOR=vim
 
+# Replicate the bash vim mode behavior on 'v'
+edit-command-line() {
+  local tmpfile
+  tmpfile=$(mktemp)
+  echo "${(z)BUFFER}" > $tmpfile
+  vim $tmpfile </dev/tty # suppress "Vim: Warning: Input is not from a terminal"
+  BUFFER=$(< $tmpfile)
+  rm -f $tmpfile
+  zle .reset-prompt
+}
+zle -N edit-command-line
+bindkey -M vicmd 'v' edit-command-line
+
 # User specific aliases and functions
 #alias rm='rm -i'
 alias gitcleanbranch='git branch --merged | egrep -v "(^\*|master|dev)" | xargs git branch -d'
@@ -10,10 +23,12 @@ alias grepr='grep -r -n --color=auto'
 alias ipython='ipython notebook --matplotlib inline'
 alias ls='ls -G'
 alias mv='mv -i'
+alias cp='cp -i'
 alias mydu='du -ks * | sort -nr | cut -f2 | sed '"'"'s/^/"/;s/$/"/'"'"' | xargs du -sh'
 alias screen='screen -e\`n -s /bin/bash'
 alias tmux='export TERM=xterm-256color; /usr/bin/tmux'
 alias vim='vim -X -O'
+alias ports='lsof -nP -iTCP -sTCP:LISTEN'
 
 # bash completion
 if [ -f $HOME/.zsh/bash_completion ]; then
@@ -67,3 +82,18 @@ eval "$(pyenv init -)"
 #export ARCHFLAGS="-arch x86_64"
 
 [ -s "/Users/davidma/.web3j/source.sh" ] && source "/Users/davidma/.web3j/source.sh"
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/opt/homebrew/Caskroom/miniforge/base/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/opt/homebrew/Caskroom/miniforge/base/etc/profile.d/conda.sh" ]; then
+        . "/opt/homebrew/Caskroom/miniforge/base/etc/profile.d/conda.sh"
+    else
+        export PATH="/opt/homebrew/Caskroom/miniforge/base/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
